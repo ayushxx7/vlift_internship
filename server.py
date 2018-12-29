@@ -13,14 +13,15 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 login_manger = LoginManager()
 login_manger = init_app(app)
-login_manager.login_view = 'login'
-
+login_manager.login_view = 'userLogin'
 
 
 class User(db.Model):
 	id = db.Column(db.Integer, primary_key = True)
 	username = db.Column(db.String(30), unique = True)
 	password = db.Column(db.String(80))
+
+
 
 class UserLogin(FlaskForm):
 	username = StringField('username', validators = [InputRequired(), Length(min =4, max=30)])
@@ -59,7 +60,7 @@ def signup():
 		new_user = User()
 		new_user.username = form.username.data
 		# print(new_user.username)
-		hashed_password = generate_password_hash(form.password.data, method = 'sha256'
+		hashed_password = generate_password_hash(form.password.data, method = 'sha256')
 		new_user.password = hashed_password
 
 		# print(User)
