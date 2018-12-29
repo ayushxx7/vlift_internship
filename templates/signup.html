@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2> SignUp </h2>
+<form action="/signup" method = "POST">
+<div class = 'container'>
+  {{ form.csrf_token }}
+  <div class="form-group">
+    <label for="email">Email address:</label>
+ <!--    <input type="email" class="form-control" id="email"> -->
+ <span class = "form-control">
+  {{ form.username }}
+  </div>
+  <div class="form-group">
+    <label for="pwd">Password:</label>
+    <!-- <input type="password" class="form-control" id="pwd"> -->
+    {{ form.password }}
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+</div>
+{% endblock %}

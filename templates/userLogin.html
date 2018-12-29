@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2> User Login </h2>
+<form action="/userLogin" method = "POST">
+<div class = 'container'>
+	{{ form.csrf_token }}
+  <div class="form-group">
+    <!-- can also form.username.label -->
+    <label for="email">Email address:</label>
+	<span class = 'form-control'>{{ form.username }}</span>
+    <!-- <input type="email" class="form-control" id="email"> -->
+  </div>
+  <div class="form-group">
+    <label for="pwd">Password:</label>
+    <!-- <input type="password" class="form-control" id="pwd"> -->
+    <span class = 'form-control'>
+	{{ form.password }} </span>
+  </div>
+  <div class="checkbox">
+    <label> Remember me {{form.remember}}</label>
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+</div>
+{% endblock %}
